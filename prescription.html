@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b6b4f">
+<meta name="description" content="Medora - Your prescription list with total generic saving.">
+<title>Medora - My Prescription</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="index.html">
+    <img src="icons/icon.svg" alt="Medora logo" class="logo">
+    <div>
+      <h1>Medora</h1>
+      <p data-i18n="brandTagline">Cheaper Generics, Clear Prices</p>
+    </div>
+  </a>
+</header>
+<div class="control-bar">
+  <span class="offline-badge solid"><i class="bi bi-wifi-off"></i> <span data-i18n="offline">Works Offline</span></span>
+  <label class="control-item"><i class="bi bi-translate"></i> <select id="langSelect" class="lang-select" aria-label="Select language"></select></label>
+  <button id="themeToggle" class="theme-btn-bar" aria-label="Toggle theme"><i class="bi bi-moon-stars-fill"></i> <span data-i18n="themeWord">Theme</span></button>
+</div>
+
+
+<nav class="main-nav">
+  <a class="nav-link" href="index.html" data-i18n="navSearch">Search</a>
+  <a class="nav-link" href="prescription.html"><span data-i18n="navRx">My Prescription</span> <span id="rxCount" class="rx-count">0</span></a>
+  <a class="nav-link" href="kendras.html" data-i18n="navKendras">Jan Aushadhi Kendras</a>
+  <a class="nav-link" href="about.html" data-i18n="navAbout">About &amp; Disclaimer</a>
+</nav>
+
+<main>
+  <section class="card">
+    <div class="card-head">
+      <h3><i class="bi bi-clipboard2-pulse-fill"></i> <span data-i18n="rxTitle">My Prescription</span></h3>
+      <button id="clearRxBtn" class="text-btn" data-i18n="clearBtn">Clear</button>
+    </div>
+    <p id="rxEmpty" class="muted" data-i18n="rxEmpty">No medicines added yet.</p>
+    <ul id="rxList" class="rx-list"></ul>
+    <div id="rxTotals" class="rx-totals hidden">
+      <div class="total-row"><span data-i18n="brandedTotal">Branded total</span><strong id="totalBranded"></strong></div>
+      <div class="total-row"><span data-i18n="genericTotal">Generic (Jan Aushadhi) total</span><strong id="totalGeneric"></strong></div>
+      <div class="total-row saving-row"><span data-i18n="youSave">You save</span><strong id="totalSaving"></strong></div>
+      <div class="chronic">
+        <label for="packsPerMonth" data-i18n="chronicQ">If you buy this prescription every month, packs per month:</label>
+        <input type="number" id="packsPerMonth" min="1" max="30" value="1">
+        <p id="chronicOutput" class="chronic-output"></p>
+      </div>
+      <div class="rx-actions">
+        <button id="printBtn" class="btn secondary"><i class="bi bi-printer-fill"></i> <span data-i18n="printBtn">Print Sheet</span></button>
+        <button id="whatsappBtn" class="btn whatsapp"><i class="bi bi-whatsapp"></i> <span data-i18n="whatsappBtn">Share on WhatsApp</span></button>
+      </div>
+    </div>
+  </section>
+
+  <section class="disclaimer" data-i18n="disclaimer">Disclaimer: Medora shows price and molecule information only. It is not medical advice.</section>
+</main>
+
+<footer>
+  <p data-i18n="footerLine">Medora - Built for GDG On Campus SRMCEM Hackfest, Lucknow. Open source under MIT Licence.</p>
+</footer>
+
+<div id="printSheet" class="print-sheet">
+  <h2 data-i18n="printTitle">Medora - Generic Medicine List</h2>
+  <p data-i18n="printSub">Show this sheet at the chemist / Jan Aushadhi Kendra and confirm with your doctor or pharmacist.</p>
+  <ul id="printList"></ul>
+  <p id="printTotal"></p>
+</div>
+
+<script src="js/common.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/prescription.js"></script>
+</body>
+</html>
